@@ -24,11 +24,17 @@
 stores the namespace and transactions logs
 persistently.</description>
 </property>
-<!-- <property>
+<property>
  <name>dfs.datanode.data.dir</name>
 <value>file:///users/andyhero/rdma-hadoop-3.x-0.9.1-x86/dummy2</value>
 <description>Comma separated list of paths of the local storage
    devices with corresponding types on a DataNode where it
    should store its blocks.</description>
-</property> -->
+</property>
+<property>
+  <name>dfs.datanode.rdma.port</name>
+  <value>12345</value>
+<description>Specify the port to be used for establishing RDMA
+     connections (default is 9999).</description>
+</property>
 </configuration>

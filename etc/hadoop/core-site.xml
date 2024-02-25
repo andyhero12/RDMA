@@ -33,4 +33,18 @@
  <description>Disable the RDMA feature over RoCE. Default value
      of hadoop.roce.enabled is false.</description>
 </property>
+<property>
+  <name>hadoop.rdma.dev.name</name>
+  <value>mlx5_0</value>
+  <description>Specify the name of the RDMA device to be used. This
+     takes precedence over hadoop.rdma.dev.num if both are set.
+     </description>
+</property>
+<property>
+  <name>hadoop.rdma.dev.num</name>
+  <value>0</value>
+   <description>Specify the ID of the RDMA device to be used.
+     </description>
+</property>
+
 </configuration>
