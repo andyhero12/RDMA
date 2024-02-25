@@ -1,0 +1,43 @@
+RDMA for Apache Hadoop 3.x Changelog
+-------------------------------------
+This file briefly describes the changes to the RDMA for Apache Hadoop 3.x
+software package. The logs are arranged in the "most recent first" order.
+
+Release 0.9.1 - 2018-11-10
+
+ NEW FEATURES
+
+     - Based on Apache Hadoop 3.0.0
+     - Compliant with Apache Hadoop 3.0.0 APIs and applications
+     - High performance design with native InfiniBand and RoCE support at 
+       the verbs level for HDFS component
+     - Support for RDMA Device Selection
+     - Supports deploying Hadoop with Slurm and PBS in different running 
+       modes (HHH and HHH-M)
+     - Easily configurable for different running modes (HHH and HHH-M) and 
+       different protocols (native InfiniBand, RoCE, and IPoIB)
+     - On-demand connection setup
+     - HDFS over native InfiniBand and RoCE
+       - RDMA-based write
+       - RDMA-based replication
+       - Overlapping in different stages of write and replication
+       - Enhanced hybrid HDFS design with in-memory and heterogeneous 
+         storage (HHH)
+         - Supports two modes of operations
+           - HHH (default) with I/O operations over RAM disk, SSD, and HDD
+           - HHH-M (in-memory) with I/O operations in-memory
+         - Policies to efficiently utilize heterogeneous storage devices 
+           (RAM Disk, SSD, and HDD)
+           - Greedy and Balanced policies support
+           - Automatic policy selection based on available storage types
+         - Hybrid replication (in-memory and persistent storage) for HHH 
+           default mode
+         - Memory replication (in-memory only with lazy persistence) for 
+           HHH-M mode
+
+     - Tested with
+       - Mellanox InfiniBand adapters (DDR, QDR, FDR, and EDR)
+       - RoCE support with Mellanox adapters
+       - RAM Disks, SSDs, and HDDs
+       - OpenJDK and IBM JDK
+
