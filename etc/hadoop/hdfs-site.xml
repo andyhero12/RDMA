@@ -19,14 +19,14 @@
 <configuration>
     <property>
      <name>dfs.namenode.name.dir</name>
-     <value>file:///users/andyhero/rdma-hadoop-3.x-0.9.1-x86/dummy</value>
+     <value>file:///users/andyhero/RDMA/dummy</value>
      <description>Path on the local filesystem where the NameNode
 stores the namespace and transactions logs
 persistently.</description>
 </property>
 <property>
  <name>dfs.datanode.data.dir</name>
-<value>file:///users/andyhero/rdma-hadoop-3.x-0.9.1-x86/dummyRAM</value>
+<value>file:///users/andyhero/RDMA/dummyRAM</value>
 <description>Comma separated list of paths of the local storage
    devices with corresponding types on a DataNode where it
    should store its blocks.</description>
