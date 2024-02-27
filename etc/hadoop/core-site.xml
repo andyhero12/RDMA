@@ -18,12 +18,12 @@
 <configuration>
  <property>
    <name>fs.defaultFS</name>
-   <value>hdfs://192.168.0.1:9000</value>
+   <value>hdfs://localhost:9000</value>
    <description>NameNode URI.</description>
 </property>
 <property>
  <name>hadoop.ib.enabled</name>
- <value>true</value>
+ <value>false</value>
 <description>Enable the RDMA feature over IB. Default value of
      hadoop.ib.enabled is true.</description>
 </property>

@@ -47,7 +47,7 @@ reduce JVM env using the mapreduce.map.env and
 Master
 processes. Example :
  1) A=foo This will set the env variable A to foo
- 2) B=$B:c This is inherit tasktracker’s B env variable.
+ 2) B=$B:c This is inherit tasktracker's B env variable.
  </description>
 </property>
 <property>

@@ -16,25 +16,25 @@
 <configuration>
  <property>
    <name>yarn.resourcemanager.address</name>
-   <value>192.168.0.1:8032</value>
+   <value>localhost:8032</value>
    <description>ResourceManager host:port for clients to submit
 jobs.</description>
 </property>
 <property>
  <name>yarn.resourcemanager.scheduler.address</name>
-<value>192.168.0.1:8030</value>
+<value>localhost:8030</value>
  <description>ResourceManager host:port for ApplicationMasters to
       talk to Scheduler to obtain resources.</description>
 </property>
 <property>
  <name>yarn.resourcemanager.resource-tracker.address</name>
- <value>192.168.0.1:8031</value>
+ <value>localhost:8031</value>
  <description>ResourceManager host:port for
      NodeManagers.</description>
 </property>
 <property>
  <name>yarn.resourcemanager.admin.address</name>
- <value>192.168.0.1:8033</value>
+ <value>localhost:8033</value>
 <description>ResourceManager host:port for administrative
      commands.</description>
 </property>
