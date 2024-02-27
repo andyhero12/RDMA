@@ -55,7 +55,7 @@ export JAVA_HOME=/
 
 # Location of Hadoop.  By default, Hadoop will attempt to determine
 # this location based upon its execution path.
-export HADOOP_HOME=/users/andyhero/rdma-hadoop-3.x-0.9.1-x86
+export HADOOP_HOME=/users/andyhero/RDMA
 
 # Location of Hadoop's configuration information.  i.e., where this
 # file is living. If this is not defined, Hadoop will attempt to
