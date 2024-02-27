@@ -40,11 +40,4 @@
      takes precedence over hadoop.rdma.dev.num if both are set.
      </description>
 </property>
-<property>
-  <name>hadoop.rdma.dev.num</name>
-  <value>0</value>
-   <description>Specify the ID of the RDMA device to be used.
-     </description>
-</property>
-
 </configuration>
