@@ -29,7 +29,7 @@
 </property>
 <property>
 <name>hadoop.roce.enabled</name>
- <value>false</value>
+ <value>true</value>
  <description>Disable the RDMA feature over RoCE. Default value
      of hadoop.roce.enabled is false.</description>
 </property>
