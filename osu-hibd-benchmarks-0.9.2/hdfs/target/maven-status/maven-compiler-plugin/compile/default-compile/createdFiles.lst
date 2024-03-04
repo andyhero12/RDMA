@@ -1,0 +1,5 @@
+edu/osu/hibd/ohb/hdfs/HDFSWriteLatency.class
+edu/osu/hibd/ohb/hdfs/HDFSWriteThroughput.class
+edu/osu/hibd/ohb/hdfs/HDFSReadLatency.class
+edu/osu/hibd/ohb/hdfs/HDFSReadThroughput.class
+edu/osu/hibd/ohb/hdfs/HDFSRandomReadLatency.class

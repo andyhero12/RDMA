@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2011-2016, The Ohio State University. All rights reserved.
+ This file is part of the OSH HiBD-Benchmarks software package
+ developed by the team members of The Ohio State University's
+ Network-Based Computing Laboratory (NBCL), headed by Professor
+ Dhabaleswar K. (DK) Panda.
+
+ For detailed copyright and licensing information, please refer to
+ the copyright file COPYRIGHT in the top level directory.
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>edu.osu.hibd</groupId>
+    <artifactId>root</artifactId>
+    <version>0.9.2</version>
+    <relativePath>..</relativePath>
+  </parent>
+
+  <packaging>pom</packaging>
+  <groupId>edu.osu.hibd.memcached</groupId>
+  <artifactId>ohb-memcached</artifactId>
+  <version>1.0.0</version>
+  <name>OHB Memcached Microbenchmarks</name>
+  <description>OSU HiBD Memcached Micro-benchmarks</description>
+  <url>http://maven.apache.org</url>
+
+  <!-- update libmemcached.home property with the RDMA-Memcached-0.9.5 install path that contains libmemcached libraries 
+       i.e., ${RDMA_MEMCACHED_INSTALL_DIR}/libmemcached -->
+  <properties>
+    <libmemcached.home>/users/andyhero/RDMA/osu-hibd-benchmarks-0.9.2/memcached/rdma-memcached-0.9.6/libmemcached</libmemcached.home>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <executions>
+          <execution>
+            <id>clean-memcached-mcs</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>src</workingDirectory>
+              <executable>make</executable>
+              <arguments>
+                <argument>clean</argument>
+                <argument>LIBMEMCACHED_HOME="libmemcached_home"</argument> <!--dummy parameter just for clean -->
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>compile-memcached-mcs</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>src</workingDirectory>
+              <executable>make</executable>
+              <arguments>
+                <argument>LIBMEMCACHED_HOME=${libmemcached.home}</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>install-memcached-mcs</id>
+            <phase>install</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>src</workingDirectory>
+              <executable>make</executable>
+              <arguments>
+                <argument>install</argument>
+                <argument>LIBMEMCACHED_HOME=${libmemcached.home}</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>package-memcached-mcs</id>
+            <phase>package</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <workingDirectory>src</workingDirectory>
+              <executable>make</executable>
+              <arguments>
+                <argument>install</argument>
+                <argument>LIBMEMCACHED_HOME=${libmemcached.home}</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.4.1</version>
+        <executions>
+          <execution>
+            <id>enforce-property</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireProperty>
+                  <property>libmemcached.home</property>
+                  <message>You must set a libmemcached.home property to point to the RDMA-Libmemcached-0.9.5 install path for successful build!</message>
+                  <regex>.*/libmemcached.*</regex>
+                  <regexMessage>Set libmemcached.home property to a non-empty fully-qualified path to RDMA-Libmemcached-0.9.5 install path.</regexMessage>
+                </requireProperty>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

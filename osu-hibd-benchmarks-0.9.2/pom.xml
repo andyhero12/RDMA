@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2011-2016, The Ohio State University. All rights reserved.
+ This file is part of the OSH HiBD-Benchmarks software package
+ developed by the team members of The Ohio State University's
+ Network-Based Computing Laboratory (NBCL), headed by Professor
+ Dhabaleswar K. (DK) Panda.
+
+ For detailed copyright and licensing information, please refer to
+ the copyright file COPYRIGHT in the top level directory.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>edu.osu.hibd</groupId>
+  <artifactId>root</artifactId>
+  <version>0.9.2</version>
+  <packaging>pom</packaging>
+
+  <name>OHB Root</name>
+
+  <description>
+    This is the top level project that builds and packages OSU HiBD micro-benchmarks for individual use. 
+    Micro-benchmarks included for Memcached, HBase, HDFS, and Spark.
+  </description>
+
+  <!-- Properties Management -->
+  <properties>
+    <ohb.version>0.9.2</ohb.version>
+  </properties>
+
+  <modules>
+    <!-- our internals -->
+    <module>spark</module>
+    <module>hbase</module>
+    <module>hdfs</module>
+    <module>memcached</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

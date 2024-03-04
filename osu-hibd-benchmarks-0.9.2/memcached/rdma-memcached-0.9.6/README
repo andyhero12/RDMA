@@ -1,0 +1,73 @@
+RDMA for Memcached 0.9.6 release
+---------------------------------
+
+RDMA for Memcached is a high-performance design of Memcached over RDMA-enabled Interconnects. 
+This version of RDMA for Memcached 0.9.6 is based on Memcached 1.5.3 and libmemcached 1.0.18. 
+This README includes some information regrading its usage and some examples.
+
+Please see the userguide at http://hibd.cse.ohio-state.edu/userguide/ for more information.
+
+RDMA-Memcached
+===============
+
+Memcached Server can be executed in the same way as sockets-based Memcached server.
+  
+ # <RDMA-MEMCACHED_INSTALL_PATH>/memcached/bin/memcached
+
+For a list of arguments, please run <RDMA-MEMCACHED_INSTALL_PATH>/bin/memcached -h. Below is 
+a list of its runtime parameters,
+
+ -p <num>      : TCP port to listen on for RDMA connections (default: 11211)
+ -t <num>      : Number of threads to use to handle RDMA clients (default: 4)
+ -m <num>      : Maximum item memory in megabytes (default: 64 MB). For hybrid mode, this represents key/index memory.
+ -H <SSD-path> : Enable SSD-assisted hybrid mode with RDMA Memcached. 
+                 This is used to specify a fully qualified file-path. 
+                 File-path must specify an existing directory on SSD.
+ -z            : Enable direct I/O for SSD read/write (O DIRECT flag)
+ -N <num>      : IB/RoCE HCA device number to use (default: 0)
+ -W <num>      : IB/RoCE HCA device name to use
+ -e <num>      : Value item memory in megabytes (default: 64 MB) This valid only in hybrid mode.
+ -g <num>      : Maximum SSD file size in megabytes (default: 32 GB) This is applicable to the RDMA Memcached hybrid mode.
+ -T <num>      : number of threads to use to handle RDMA clients (default: 0) 
+ -E <num>      : TCP port to listen on (default: 11212, not enabled by default)
+ -l <addr>     : Interface to listen on (default: INADDR ANY, all addresses) <addr> may be specified as host :port. 
+ -d            : Run as a daemon
+ -m <num>      : Max memory to use for keys/index in megabytes (default: 64 MB)
+ -h            : Print this help and exit
+ -i	       : Print memcached and libevent license
+ -o chunked_items                   : Enable item chaining explicitly for RDMA-Memcached In-Memory mode. 
+                                      This option is not valid for hybrid mode or burst-buffer mode.
+ -o maxbuffers_chunked=<num>        : Maximum number of temporary buffers to use for remote fetches and per thread with 
+                                      item chaining i.e., -o chunked items. (default: 8 and fixed-size of val size max).
+ -o use_roce                        : Use RDMA-over-Converged-Ethernet (RoCE) mode for RDMA workers.
+ -o burst_buffer=<SSD-dir-path>     : Enable burst-buffer mode for RDMA-Hadoop HDFS (HHH-L-BB). 
+                                      Provide a valid SSD directory path for persisting data. 
+                                      i.e., -o burst buffer=<SSD-dir-path>.
+
+RDMA-Libmemcached API
+=====================
+
+The RDMA-based libmemcached API that can be used with to contact the RDMA-based Memcached server. 
+A simple Memcached client program is provided along with the package, and is available in 
+the<RDMA-MEMCACHED-INSTALL PATH>/libmemcached/share/example folder. 
+The example "memcached_example.c" illustrates use of memcached_set() and memcached_get() to store
+and retrieve data from the Memcached server respectively. The example "memcached_nb_example.c"
+illustrates the use of newly introduced RDMA-enabled non-blocking request/progress APIs for issuing 
+set and get requests i.e., memcached_iset()/iget()/bset()/get(). 
+Users can compile the Memcached Client applications with the RDMA-based Memcached Client library 
+as shown below:
+
+ # gcc <MEMCACHED_EXAMPLE_PROGRAM>.c -I<RDMA-MEMCACHED_INSTALL_PATH>/libmemcached/include
+       -L<RDMA-MEMCACHED_INSTALL_PATH>/libmemcached/lib -lmemcached -lpthread
+       -o <MEMCACHED_EXAMPLE_PROGRAM>
+
+The example Memcached client application can be run with environmental parameters specified at 
+runtime. Here is a sample output:
+
+ # EXAMPLE_ENV_PARAM=VALUE ./<MEMCACHED_EXAMPLE_PROGRAM> node123:11211
+ # Key stored successfully
+ # Key retrieved successfully. Key = KEY, Value = VALUE123
+
+Environment variables that can be set for the RDMA-Memcached client include MEMCACHED_USE_ROCE,
+MEMCACHED_USE_HCA_NUM, MEMCACHED_USE_HCA_NAME. Please see the "Memcached Client Parameters" section
+in the userguide at http://hibd.cse.ohio-state.edu/userguide/ for more details. 

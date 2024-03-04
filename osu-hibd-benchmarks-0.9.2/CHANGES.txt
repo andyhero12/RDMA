@@ -1,0 +1,47 @@
+OSU HiBD-Benchmarks (OHB)
+-------------------------
+This file briefly describes the changes to the OSU HiBD-Benchmarks
+package. The logs are arranged in the "most recent first" order.
+
+
+OSU HiBD-Benchmarks 0.9.2 - 2016-11-22
+
+* Features:
+    - Micro-benchmarks for Apache Spark
+      - GroupBy
+      - SortBy
+
+
+OSU HiBD-Benchmarks 0.9.1 - 2016-08-23
+
+* Features:
+    - Micro-benchmarks for Memcached
+      - Non-Blocking API Latency Benchmark
+      - Hybrid Memory Latency Benchmark
+    - Micro-benchmarks for Apache HBase
+      - Get Latency Benchmark
+      - Put Latency Benchmark
+
+
+OSU HiBD-Benchmarks 0.8 - 2015-08-24
+
+* Features:
+    - Micro-benchmarks for Hadoop Distributed File System (HDFS)
+      - Sequential Write Latency (SWL) Benchmark
+      - Sequential Read Latency (SRL) Benchmark
+      - Random Read Latency (RRL) Benchmark
+      - Sequential Write Throughput (SWT) Benchmark
+      - Sequential Read Throughput (SRT) Benchmark
+    - Support benchmarking
+      - Apache Hadoop 1.x and 2.x HDFS
+      - Hortonworks Data Platform (HDP) HDFS
+      - Cloudera Distribution of Hadoop (CDH) HDFS
+
+
+OSU HiBD-Benchmarks 0.7.1 - 2014-07-21
+
+* Features:
+    - Micro-benchmarks for Memcached
+      - Get Benchmark
+      - Set Benchmark
+      - Mixed Get/Set Benchmark

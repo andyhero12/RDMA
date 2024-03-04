@@ -1,0 +1,103 @@
+RDMA-Memcached Changelog
+------------------------
+This file briefly describes the changes to the RDMA-Memcached software package.
+The logs are arranged in the "most recent first" order.
+
+
+RDMA-Memcached 0.9.6 - 2017-12-22
+
+* Features:
+    - Memcached server designs based on Memcached 1.5.3
+      - Compliant with the Memcached’s new item chaining feature in
+        In-Memory mode
+      - Compliant with the latest Memcached’s LRU maintainer and slab
+        balancer enhancements
+
+    - Runtime selection of HCA device for nodes equipped with multiple
+      InfiniBand/RocE HCAs
+
+    - Enable and disable item chaining through extended server options    
+
+
+RDMA-Memcached 0.9.5 - 2016-08-23
+
+* Features:
+    - Non-Blocking Libmemcached Set/Get API extensions
+      - APIs to issue non-blocking set/get requests to the RDMA-based Memcached 
+        servers
+      - APIs to support monitoring the progress of non-blocking requests issued 
+        in an asynchronous fashion
+      - Facilitating overlap of concurrent set/get requests
+
+    - Support for burst-buffer mode in Lustre-integrated design of HDFS in RDMA 
+      for Apache Hadoop-2.x
+
+    - Tested with 
+      - Native Verbs-level support with Mellanox InfiniBand adapters (DDR, QDR, 
+        FDR, and EDR) 
+      - RoCE support with Mellanox adapters
+      - Various multi-core platforms
+      - SATA-SSD, PCIe-SSD, and NVMe-SSD
+
+
+RDMA-Memcached 0.9.4 - 2015-12-01
+
+* Features:
+    - Memcached server designs based on Memcached 1.4.24
+      - Compliant with the new Memcached's core LRU algorithm
+
+    - Support for enabling and disabling direct I/O for SSD read/write
+
+    - Tested with 
+      - Native Verbs-level support with Mellanox InfiniBand adapters (DDR, QDR
+        and FDR) 
+      - RoCE support with Mellanox adapters
+      - Various multi-core platforms
+      - SATA-SSD, PCIe-SSD, and NVMe-SSD
+
+* Bug Fixes:
+    - Fix for memcached mget support non-string data types 
+      - Thanks to Lucas A. Wilson@TACC for reporting the issue
+    - Fix for memcached_exist error 
+      - Thanks to Lucas A. Wilson@TACC for reporting the issue
+    - Fix for SSD limit issues 
+      - Thanks to Yuekuan Li@Memblaze for reporting the issue
+
+
+RDMA-Memcached 0.9.3 - 2015-03-17
+
+* Features:
+    - Memcached server designs based on Memcached 1.4.22
+
+    - High performance design of SSD-assisted hybrid memory
+
+    - Tested with 
+      - Native Verbs-level support with Mellanox InfiniBand adapters (DDR, QDR
+        and FDR) 
+      - RoCE support with Mellanox adapters 
+      - Various multi-core platforms 
+      - SSD
+
+
+RDMA-Memcached 0.9.1 - 2014-07-21
+
+* Features:
+    - Memcached server designs based on Memcached 1.4.20
+
+    - Memcached client designs based on Libmemcached 1.0.18
+
+    - High performance design with native InfiniBand and RoCE support at the
+      verbs-level for Memcached Server and Client
+
+    - Compliant with Memcached APIs and applications
+
+    - Support for both RDMA-enhanced and socket-based Memcached clients
+
+    - Easily configurable for native InfiniBand, RoCE, and traditional
+      sockets-based support (Ethernet and InfiniBand with IPoIB)
+
+    - On-demand connection setup
+
+    - Tested with
+      - Mellanox InfiniBand adapters (DDR, QDR, and FDR) RoCE
+      - Various multi-core platforms

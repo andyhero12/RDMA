@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+OHB_VERSION="0.9.2"
+OHB_CLASS=$1
+MAPS=$2
+KVS=$3
+VALSIZE=$4
+REDUCERS=$5
+
+if [ x"$OHB_HOME" == x ]; then 
+  echo "Please set OHB_HOME to run GroupBy and SortBy micro-benchmarks"
+  exit 1
+fi
+
+if [ x"$SPARK_HOME" == x ]; then 
+  echo "Please set SPARK_HOME to run GroupBy and SortBy micro-benchmarks"
+  exit 1
+fi
+
+if [ ! $# -eq 5 ]
+then
+  echo "Usage: $0 edu.osu.hibd.ohb.spark.[GroupByTest|SortByTest] NUM_MAPS NUM_KEY_VALUE_PAIRS VALUE_SIZE NUM_REDUCERS"
+  exit 1
+fi
+
+SPARK_OHB_JAR=${OHB_HOME}/spark/target/ohb-spark-${OHB_VERSION}.jar
+OHB_MASTER=${MASTER:-"local[*]"}
+
+"$SPARK_HOME"/bin/spark-submit \
+  --master $OHB_MASTER \
+  --class $OHB_CLASS \
+  "$SPARK_OHB_JAR" \
+  $MAPS $KVS $VALSIZE $REDUCERS
