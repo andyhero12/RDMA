@@ -63,6 +63,7 @@ public class HDFSReadLatency {
 
 		try {
 			Path pt = new Path(fileName);
+			System.out.println(conf);
 			FileSystem fs = FileSystem.get(conf);
 
 			FSDataInputStream in = fs.open(pt); // opens an input stream to the

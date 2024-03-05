@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>root</artifactId>
+    <groupId>edu.osu.hibd</groupId>
+    <version>0.9.2</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.osu.hibd.hdfs</groupId>
+  <artifactId>ohb-hdfs</artifactId>
+  <name>OHB HDFS Microbenchmarks</name>
+  <description>OSU HiBD HDFS Micro-benchmarks</description>
+  <url>http://maven.apache.org</url>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer />
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+

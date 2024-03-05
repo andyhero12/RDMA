@@ -24,13 +24,34 @@
   <description>OSU HiBD HDFS Micro-benchmarks</description>
   <url>http://maven.apache.org</url>
 
+  <build>
+    <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      </plugins>
+    </build>
   <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client -->
   <dependencies>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-client</artifactId>
-      <version>2.7.3</version>
+      <version>3.0.0</version>
     </dependency>
   </dependencies>
-
 </project>
