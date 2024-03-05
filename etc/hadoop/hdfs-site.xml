@@ -31,6 +31,11 @@ persistently.</description>
    devices with corresponding types on a DataNode where it
    should store its blocks.</description>
 </property>
+<property>
+    <name>dfs.namenode.http-address</name>
+    <value>localhost:50070</value>
+    <description>local http</description>
+</property>
 <!-- <property>
   <name>dfs.datanode.rdma.port</name>
   <value>12345</value>

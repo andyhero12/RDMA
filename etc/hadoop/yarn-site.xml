@@ -33,6 +33,11 @@ jobs.</description>
      NodeManagers.</description>
 </property>
 <property>
+    <name>yarn.resourcemanager.webapp.address</name>
+    <value>localhost:8088</value>
+    <description>Local webapp</description>
+</property>
+<property>
  <name>yarn.resourcemanager.admin.address</name>
  <value>localhost:8033</value>
 <description>ResourceManager host:port for administrative
